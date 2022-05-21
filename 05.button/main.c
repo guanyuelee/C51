@@ -15,6 +15,24 @@ void Delay(unsigned int time)		//@12.000MHz
 }
 
 void main(){
+	// Control: Control the light by shifting. 
+	unsigned char LEDNum = 1;
+	while(1)
+	{
+		P2 = ~LEDNum; 
+		if(P3_1 == 0){
+			Delay(20);
+			while(P3_1 == 0);
+			Delay(20);
+			LEDNum = LEDNum << 1;
+			P2 = ~LEDNum; 
+			if(LEDNum == 0){
+				LEDNum = 1; 
+			}
+		}
+	}
+	
+	/**
 	// Control: Control the light by binary. 
 	unsigned char LEDNum = 0; 
 	while(1){
@@ -22,11 +40,11 @@ void main(){
 			Delay(20); 
 			while(P3_1 == 0);
 			Delay(20);
-			
 			LEDNum += 1; 
 			P2 = ~LEDNum;
 		}
 	}
+	*/
 	
 	/**
 	// Control: Control the light by the button. 
