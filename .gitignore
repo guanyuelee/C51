@@ -1,7 +1,9 @@
 /*/*
 !/*/Objects/
 /*/Objects/*
+!/*/*.h
 !/*/*.c
 !/**/*.hex
+!/lib/
 
 
