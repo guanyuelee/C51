@@ -1,6 +1,4 @@
 #include <REGX52.H>
-
-// 1 ms. 
 void timer0Init(){
 	// TMOD = 0x01
 	TMOD &= 0xF0;		//设置定时器模式
