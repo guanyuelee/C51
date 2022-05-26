@@ -14,15 +14,3 @@ void timer0Init(){
 	PT0 = 0;
 }
 
-/*
-void timer0Routine() interrupt 1{
-	static unsigned int count;
-	TL0 = 0x66;	
-	TH0 = 0xFC;	
-	count ++;
-	if(count >= 500){
-		count = 0;
-		
-	}
-}
-*/

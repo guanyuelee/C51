@@ -429,5 +429,3 @@ void timer0Routine() interrupt 1{
 		flashFlag = !flashFlag; 
 	}
 }
-
-
