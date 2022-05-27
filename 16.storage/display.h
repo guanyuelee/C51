@@ -1,7 +1,7 @@
 #ifndef __DISPLAY_H__
 #define __DISPLAY_H__
 
-// Nixie utilities. location代表位置，number代表显示的数字
+// Nixie utilities. 
 void displayInNixie(unsigned char location, unsigned char number); 
 
 // LCD display utilities. 
