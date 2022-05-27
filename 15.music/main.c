@@ -6,6 +6,13 @@
 sbit BUZZER=P2^5;
 sfr Nixie = 0x80;
 
+// 初始下所有的keynode
+// P0代表休止符，简谱上的0代表休止
+// Lx代表低音x，简谱上是x下面带一个点。
+// Mx代表中音x，简谱上是x
+// Hx是高音x，简谱是x上点
+// HHx是超高音，简谱是x上点点。
+// 后面带_代表生音，M1_代表 1升。
 #define P0	0
 #define L1  1
 #define L1_ 2
@@ -59,7 +66,9 @@ sfr Nixie = 0x80;
 #define HH6_ 47
 #define HH7  48
 
+// 特殊符号，CON代表音符音符之间不停止。
 #define CON 49
+// 特殊符号，END代表曲目结束。
 #define END 50
 
 
@@ -69,21 +78,9 @@ unsigned int freqs[] = {0, 63628, 63731, 63835, 63928, 64021, 64103, 64185, 6426
 64898, 64934, 64968, 65000, 65030, 65058, 65085, 65110, 65134, 65157, 65178, 
 65198, 65217, 65235, 65252, 65268, 65283, 65297, 65310, 65323, 65335, 65346, 
 65357, 65367, 65377, 65385, 65394, 65402, 65409};
-// 初始化乐谱 1 1# 2 2# 3 4 4# 5 5# 6 6# 7
-//            1 2  3 4  5 6 7  8 9 10 11 12
 
-/**
-unsigned int music[] = {
-	1, 1, 8, 8, 10, 10, 8, 6, 6, 5, 5, 3, 3, 1, 255};
-// 初始化每个音符的长度，1表示1/8拍，2表示1/4拍，4表示1/2，8表示1拍，16表示2拍
-unsigned int length[] ={
-	8, 8, 8, 8, 8, 8, 16, 8, 8, 8, 8, 8, 8, 16};
-// 初始化重低音，0表示低音阶，1表示普通音阶，2表示中音阶，3表示高音阶
-unsigned int scales[] ={
-	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-// 初始化指示器
-*/
 
+// 初始化简谱，1表示1/4拍，2表示1/2拍，4表示1拍
 unsigned int code music[] = {
 	/**第一部分**/
 	// 如果你突然打了个喷嚏 那一定就是我在想你
@@ -193,7 +190,7 @@ unsigned int code music[] = {
 	M1, 2, 
 	M1, 2, 
 	L6, 2, 
-	CON, 0,
+	CON, 0,  // 连接符号，不停止
 	L7, 2, 
 	M1, 1, 
 	M2, 1,
@@ -462,7 +459,7 @@ unsigned int code music[] = {
 	M2, 1, 
 	M1, 1+4, 
 	P0, 4,
-	/**第四部分
+	/**第四部分 
 	M3, 2, 
 	M1, 2, 
 	P0, 2,
@@ -537,14 +534,18 @@ unsigned int code music[] = {
 	END
 };
 
+// 数码管输出
 void displayNixie(){
+	// 666
 	displayInNixie(2, 6); 
 	displayInNixie(3, 6);
 	displayInNixie(4, 6); 
+	// 输出8是为了让端口占用不那么影响666
 	displayInNixie(8, 8); 	
 }
 
 void displayLED(){
+	// 爱心，需要画别的图形可以参考 https://github.com/guanyuelee/C51/blob/main/12.led/easy_8x8.xlsx
 	matrixLedShowColumn(0, 0x70); 
 	matrixLedShowColumn(1, 0xF8); 
 	matrixLedShowColumn(2, 0xFC); 
@@ -555,6 +556,7 @@ void displayLED(){
 	matrixLedShowColumn(7, 0x70); 
 }
 
+// speed用来控制曲子整体节拍长度，越小越快
 unsigned int count=0, speed=125, delay; 
 
 // 初始化主函数
