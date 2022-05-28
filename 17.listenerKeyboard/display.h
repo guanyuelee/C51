@@ -1,12 +1,22 @@
 /*
  * @Author       : Guanyue li
  * @Date         : 2022-05-28 00:05:39
- * @LastEditTime : 2022-05-28 10:52:25
+ * @LastEditTime : 2022-05-28 11:20:24
  * @Description  : file content
  * @FilePath     : \17.listenerKeyboard\display.h
  */
 #ifndef __DISPLAY_H__
 #define __DISPLAY_H__
+
+// 这个是单笔画输出，按中国汉字的“日”字书写顺序来表示数码管的每个笔画。
+#define NIXIE_SGL_1 17  
+#define NIXIE_SGL_2 18
+#define NIXIE_SGL_3 19
+#define NIXIE_SGL_4 20
+#define NIXIE_SGL_5 21
+#define NIXIE_SGL_6 22
+#define NIXIE_SGL_7 23
+#define NIXIE_SGL_8 24  
 
 // Nixie utilities. 
 #define NIXIE_FPS 500
