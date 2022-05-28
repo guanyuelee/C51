@@ -1,12 +1,13 @@
 /*
  * @Author       : Guanyue li
  * @Date         : 2022-05-27 19:09:08
- * @LastEditTime : 2022-05-27 23:30:18
+ * @LastEditTime : 2022-05-28 11:49:38
  * @Description  : file content
- * @FilePath     : \16.storage\AT24C02.c
+ * @FilePath     : \17.listenerKeyboard\AT24C02.c
  */
 #include <REGX52.H>
 #include "I2C.h"
+#include "sleep.h"
 
 #define AT24C02_ADDRESS 0xA0
 
@@ -19,7 +20,7 @@ void AT24C02_WriteByte(unsigned char address, unsigned char byte){
 	I2C_SendByte(byte); 
 	I2C_ReceiveAck(); 
 	I2C_Stop();
-	// Note: 调用写入内容后记得要sleep一段时间（>=5ms） 
+	sleep(5);
 }
 
 unsigned char AT24C02_ReadByte(unsigned char address){

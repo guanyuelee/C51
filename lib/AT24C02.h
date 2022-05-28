@@ -13,6 +13,7 @@
  * @param {unsigned char} address: 要写入的地址
  * @param {unsigned char} byte: 要写入的字节
  * @return {无}
+ * Note: 调用写入内容后记得要sleep一段时间（>=5ms),这里我已经默认sleep了5ms
  */
 void AT24C02_WriteByte(unsigned char address, unsigned char byte);
 

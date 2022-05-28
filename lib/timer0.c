@@ -1,3 +1,10 @@
+/*
+ * @Author       : Guanyue li
+ * @Date         : 2022-05-28 00:05:39
+ * @LastEditTime : 2022-05-28 10:28:46
+ * @Description  : file content
+ * @FilePath     : \17.listenerKeyboard\timer0.c
+ */
 #include <REGX52.H>
 
 // 1 ms. 
@@ -21,8 +28,7 @@ void timer0Routine() interrupt 1{
 	TH0 = 0xFC;	
 	count ++;
 	if(count >= 500){
-		count = 0;
-		
+		count = 0;	
 	}
 }
 */
