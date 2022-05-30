@@ -1,9 +1,9 @@
 /*
  * @Author       : Guanyue li
  * @Date         : 2022-05-28 00:05:39
- * @LastEditTime : 2022-05-30 11:06:54
+ * @LastEditTime : 2022-05-28 11:20:24
  * @Description  : file content
- * @FilePath     : \21.breathe\display.h
+ * @FilePath     : \17.listenerKeyboard\display.h
  */
 #ifndef __DISPLAY_H__
 #define __DISPLAY_H__
@@ -23,7 +23,7 @@
 #define MATRIX_LED_PORT P0
 #define NIXIE_DEFAULT 16
 
-// void displayInNixie(unsigned char location, unsigned char number); 
+void displayInNixie(unsigned char location, unsigned char number); 
 void setNixieBuffer(unsigned char location, unsigned char number); 
 void nixieLoop(); 
 
